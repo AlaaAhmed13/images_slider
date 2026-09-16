@@ -10,12 +10,14 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 16px;
 }
 
 .slider {
     display: grid;
     row-gap: 20px;
-    grid-template-columns: 70px 600px 70px;
+    width: min(100%, 740px);
+    grid-template-columns: 50px minmax(0, 600px) 50px;
     grid-template-rows: auto auto;
     align-items: center;
     justify-items: center;
@@ -23,11 +25,13 @@ body {
 
 .main-slider {
     width: 100%;
-    height: 400px;
+    height: min(400px, 65vh);
+    min-height: 220px;
     border-radius: 10px;
     border: 2px solid #fff;
     box-shadow: 0 0 10px #fff;
     position: relative;
+    background-color: #4b2e1b3b;
 }
 .arrow-prev,
 .arrow-next {
@@ -75,7 +79,8 @@ body {
 }
 
 .thum {
-    width: 100px;
+    flex: 1 1 0;
+    min-width: 0;
     height: 80px;
     border-radius: 10px;
     border: 2px solid #fff;
@@ -99,4 +104,31 @@ body {
     height: 100%;
     object-fit: contain;
     border-radius: 10px;
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 12px;
+    }
+
+    .slider {
+        grid-template-columns: 36px minmax(0, 1fr) 36px;
+        row-gap: 14px;
+    }
+
+    .main-slider {
+        height: min(62vh, 360px);
+        min-height: 200px;
+    }
+
+    .thumbnails {
+        grid-column: 2;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .thum {
+        flex: 1 1 calc(25% - 8px);
+        height: clamp(56px, 18vw, 76px);
+    }
 }
