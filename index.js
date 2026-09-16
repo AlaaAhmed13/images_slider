@@ -8,7 +8,7 @@ let imgpaths=Array.from(thums,thum=>thum.querySelector("img").src);
 current_idx=0;
 
 function gotoimg(idx){
-    current_idx=idx%imgpaths.length;
+    current_idx=(idx+imgpaths.length)%imgpaths.length;
     main_img.src=imgpaths[current_idx];
     counter.textContent=`${current_idx+1} / ${imgpaths.length}`;
     thums.forEach((thum,i)=>{
